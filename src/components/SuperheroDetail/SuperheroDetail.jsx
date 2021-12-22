@@ -4,7 +4,7 @@ const SuperheroDetail = ({ name, pictureurl, intelligence, strength, speed, dura
         <>
             <div className="bg-light w-25 d-flex flex-column">
                 <h3>{name}</h3>
-                <img src={pictureurl} alt={`${name} image.`}/>
+                <img src={pictureurl} alt={`${name} thumbnail.`}/>
                 <h5>Intelligence: {intelligence}</h5>
                 <h5>Strength: {strength}</h5>
                 <h5>Speed: {speed}</h5>

@@ -32,7 +32,7 @@ const Login = () => {
                 initialValues={{email: '', password: ''}}
                 onSubmit={handleSubmit}
             >
-            {({ errors, touched, isValidating }) => (
+            {({ errors, touched }) => (
                 <Form className='d-flex column'>
                 <Field name="email" validate={validateEmail} />
                 {errors.email && touched.email && <div>{errors.email}</div>}

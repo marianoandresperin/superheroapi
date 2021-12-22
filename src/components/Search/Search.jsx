@@ -1,20 +1,19 @@
 import axios from "axios";
 import { Formik, Form, Field } from "formik";
 import { useState } from "react";
-import { useSuperheros } from "../../contexts/SuperherosContext";
+import { useTeam } from "../../contexts/TeamContext";
+import Result from "../Result/Result";
 
 const Search = () => {
     const mainURL = 'https://superheroapi.com/api/';
     const token = '10226513330317308';
-    const { superheros, setSuperheros } = useSuperheros();
+    const { team, handleAdd } = useTeam();
     const [result, setResult] = useState(null)
     const [searchById, setSearchById] = useState(true)
 
     const handleSelect = (e) => {
         e.target.value === 'id' ? setSearchById(true) : setSearchById(false)
-    }
-
-    console.log(searchById)
+    };
 
     const validateInput = (value) => {
         let error;
@@ -31,7 +30,13 @@ const Search = () => {
             }
         }
         return error;
-    }
+    };
+
+    const addSuperhero = ((hero) => {
+        let heroById = [result].find(({id}) => id === hero.target.id);
+        handleAdd(heroById);
+        console.log('search' + team)
+    });
 
     const findSuperhero = (inputValue) => {
         let handleURL;
@@ -41,14 +46,12 @@ const Search = () => {
             url: `${handleURL}${inputValue}`
         })
             .then(snapshot =>
-                setResult(snapshot.data)
+                searchById === true ? setResult(snapshot.data) : setResult(snapshot.data.results)
             )
-            .catch(err => 
+            .catch(err =>
                 console.log(err)
             )
-    }
-
-    console.log(result)
+    };
     
     return (
         <>
@@ -61,7 +64,7 @@ const Search = () => {
                     findSuperhero(values.input);
                 }}
                 >
-                {({ errors, touched, validateField }) => (
+                {({ errors, touched }) => (
                     <Form>
                         <label htmlFor="type">Search by</label>
                         <Field
@@ -71,7 +74,7 @@ const Search = () => {
                             name="type"
                             multiple={false}
                         >
-                            <option selected value="id">id</option>
+                            <option defaultValue value="id">id</option>
                             <option value="name">name</option>
                         </Field>
                         <Field name="input" validate={validateInput} />
@@ -81,6 +84,14 @@ const Search = () => {
                 )}
                 </Formik>
             </div>
+            {result ? <>
+            {searchById === true ?
+                <Result name={result.name} id={result.id} pictureurl={result.image.url} remove={addSuperhero} />
+                : <> {result.map(n =>
+                    <Result key={n.id} name={n.name} pictureurl={n.image.url} remove={addSuperhero} id={n.id}/>
+                )} </>
+            } </>
+            : null}
         </>
     )
 }

@@ -1,14 +1,14 @@
 import './App.css';
 import Dashboard from './containers/Dashboard/Dashboard';
 import LoginProvider from './contexts/LoginContext';
-import SuperherosProvider from './contexts/SuperherosContext';
+import TeamProvider from './contexts/TeamContext';
 
 function App() {
   return (
     <LoginProvider>
-      <SuperherosProvider>
+      <TeamProvider>
         <Dashboard />
-      </SuperherosProvider>
+      </TeamProvider>
     </LoginProvider>
   );
 }
