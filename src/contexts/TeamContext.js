@@ -13,9 +13,9 @@ const TeamProvider = ({ children }) => {
         };
     });
 
-    const handleRemove = ((buttonId) => {
-        let getHeroId = team.find(({ id }) => id === buttonId.target.id);
-        const getHeroIndex = team.indexOf(getHeroId);
+    const handleRemove = ((hero) => {
+        let getHero = team.find(({ id }) => id === hero.id);
+        const getHeroIndex = team.indexOf(getHero);
         team.splice(getHeroIndex, 1);
         setTeam([...team]);
     });

@@ -1,0 +1,13 @@
+.background {
+    background-image: url(../../assets/background.jpg);
+    background-size: cover;
+    background-repeat: repeat;
+    height: auto;
+    min-height: 90vh;
+}
+
+.banner {
+    background-image: url(../../assets/banner.jpg);
+    height: 5rem;
+    background-position: center;
+}

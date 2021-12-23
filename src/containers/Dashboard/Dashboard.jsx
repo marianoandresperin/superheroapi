@@ -1,30 +1,30 @@
+import './Dashboard.css';
 import { useLogin } from "../../contexts/LoginContext";
-import Login from "../../components/Login/Login";
 import Superhero from "../../components/Superhero/Superhero";
 import { useTeam } from "../../contexts/TeamContext";
 import Search from "../../components/Search/Search";
 
 const Dashboard = () => {
-    const { auth, logOut } = useLogin();
+    const { auth } = useLogin();
     const { team, handleRemove } = useTeam();
 
-    const handleLogOut = () => {
-        logOut();
-    }
+    const removeSuperhero = ((hero) => {
+        let heroById = team.find(({ id }) => id === hero.target.id);
+        handleRemove(heroById);
+        // console.log(heroById)
+    })
 
     return (
         <>
-            <div className="container-fluid bg-dark h-100">
-                <div className="container d-flex justify-content-center bg-primary">
-                    {auth === true ? <><h1>Logged in as: {localStorage.getItem('email')}</h1>
-                        <button type="button" onClick={handleLogOut}>Log Out</button>
-                        <Search />
+            <div className="container-fluid background">
+                <div className="container d-flex flex-column justify-content-center align-items-center">
+                    {auth === true ? <> <Search />
                         {team ? <> 
                             {team.map(n =>
-                                <Superhero key={n.id} name={n.name} pictureurl={n.image.url} intelligence={n.powerstats.intelligence} strength={n.powerstats.strength} speed={n.powerstats.speed} durability={n.powerstats.durability} power={n.powerstats.power} combat={n.powerstats.combat} remove={handleRemove}/>
+                                <Superhero key={n.id} name={n.name} pictureurl={n.image.url} intelligence={n.powerstats.intelligence} strength={n.powerstats.strength} speed={n.powerstats.speed} durability={n.powerstats.durability} power={n.powerstats.power} combat={n.powerstats.combat} remove={removeSuperhero} id={n.id} />
                             )}
                         </> : <h1>Your superhero list is empty!</h1>
-                        } </> : <Login /> 
+                        } </> : <h1>You must be logged in!</h1>
                     }
                 </div>
             </div>

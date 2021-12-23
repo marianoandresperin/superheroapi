@@ -1,3 +1,4 @@
+import './Login.css'
 import { Formik, Form, Field } from 'formik';
 import { useLogin } from '../../contexts/LoginContext';
 
@@ -26,21 +27,26 @@ const Login = () => {
     }
 
     return (
-        <div> 
-            <h1>Sign In</h1>
+        <div className='d-flex flex-row '> 
             <Formik
                 initialValues={{email: '', password: ''}}
                 onSubmit={handleSubmit}
             >
             {({ errors, touched }) => (
-                <Form className='d-flex column'>
-                <Field name="email" validate={validateEmail} />
-                {errors.email && touched.email && <div>{errors.email}</div>}
-                <Field name="password" type="password" validate={validatePassword} />
-                {errors.password && touched.password && <div>{errors.password}</div>}
-                <button type="submit" className=''>Submit</button>
+                <Form className='d-flex flex-row input-group validation-field'>
+                <div className='d-flex flex-column align-content-center'>
+                    <Field name="email" placeholder="Email" validate={validateEmail} className="form-control" />
+                    {errors.email && touched.email && <div className='validation-text'>{errors.email}</div>}
+                </div>
+                <div className='d-flex flex-column justify-content-center'>
+                <Field name="password" type="password" placeholder="Password" validate={validatePassword} className="form-control" />
+                    {errors.password && touched.password && <div className='validation-text'>{errors.password}</div>}
+                </div>
+                <button type="submit" className='btn btn-outline-secondary'>Sign in</button>
                 </Form> 
-                
+            
+                    
+                    
             )}
             </Formik> 
         </div>

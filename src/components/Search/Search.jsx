@@ -7,7 +7,7 @@ import Result from "../Result/Result";
 const Search = () => {
     const mainURL = 'https://superheroapi.com/api/';
     const token = '10226513330317308';
-    const { team, handleAdd } = useTeam();
+    const { team, handleAdd, handleRemove } = useTeam();
     const [result, setResult] = useState(null)
     const [searchById, setSearchById] = useState(true)
 
@@ -35,9 +35,13 @@ const Search = () => {
     const addSuperhero = ((hero) => {
         let heroById = [result].find(({id}) => id === hero.target.id);
         handleAdd(heroById);
-        console.log('search' + team)
     });
 
+    const removeSuperhero = ((hero) => {
+        let heroById = team.find(({ id }) => id === hero.target.id);
+        handleRemove(heroById);
+    })
+        
     const findSuperhero = (inputValue) => {
         let handleURL;
         searchById === true ? handleURL = '' : handleURL = 'search/'
@@ -55,7 +59,7 @@ const Search = () => {
     
     return (
         <>
-            <div className="bg-light w-50 d-flex">
+            <div className="container d-flex">
                 <Formik
                     initialValues={{
                         input: '',
@@ -86,9 +90,9 @@ const Search = () => {
             </div>
             {result ? <>
             {searchById === true ?
-                <Result name={result.name} id={result.id} pictureurl={result.image.url} remove={addSuperhero} />
+                <Result name={result.name} id={result.id} pictureurl={result.image.url} add={addSuperhero} remove={removeSuperhero} />
                 : <> {result.map(n =>
-                    <Result key={n.id} name={n.name} pictureurl={n.image.url} remove={addSuperhero} id={n.id}/>
+                    <Result key={n.id} name={n.name} pictureurl={n.image.url} add={addSuperhero} remove={removeSuperhero} id={n.id}/>
                 )} </>
             } </>
             : null}

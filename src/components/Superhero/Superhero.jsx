@@ -2,18 +2,22 @@ const Superhero = ({ name, pictureurl, intelligence, strength, speed, durability
 
     return (
         <>
-            <div className="bg-light w-25 d-flex flex-column">
-                <h3>{name}</h3>
+            <div className="card w-25">
                 <img src={pictureurl} alt={`${name} thumbnail.`}/>
-                <h5>Intelligence: {intelligence}</h5>
-                <h5>Strength: {strength}</h5>
-                <h5>Speed: {speed}</h5>
-                <h5>Durability: {durability}</h5>
-                <h5>Power: {power}</h5>
-                <h5>Combat: {combat}</h5>
-                <div className="d-flex row">
-                    <button onClick={details}>Details</button>
-                    <button onClick={remove}>Remove</button>
+                <div className="card-body">
+                    <h5 className="card-title">{name}</h5>
+                </div>
+                <ul className="list-group list-group-flush">
+                    <li className="list-group-item">Intelligence: {intelligence}</li>
+                    <li className="list-group-item">Strength: {strength}</li>
+                    <li className="list-group-item">Speed: {speed}</li>
+                    <li className="list-group-item">Durability: {durability}</li>
+                    <li className="list-group-item">Power: {power}</li>
+                    <li className="list-group-item">Combat: {combat}</li>
+                </ul>
+                <div className="card-body d-flex flex-row justify-content-evenly">
+                    <button onClick={details} className="btn btn-primary">Details</button>
+                    <button id={id} onClick={remove} className="btn btn-danger">Remove</button>
                 </div>
             </div>
         </>
