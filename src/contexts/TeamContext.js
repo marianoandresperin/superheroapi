@@ -20,6 +20,8 @@ const TeamProvider = ({ children }) => {
         setTeam([...team]);
     });
 
+    console.log(team);
+
     return (
         <TeamContext.Provider value={{ team, setTeam, handleRemove, handleAdd }} >
             {children}

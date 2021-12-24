@@ -1,9 +1,7 @@
 .background {
-    background-image: url(../../assets/background.jpg);
-    background-size: cover;
-    background-repeat: repeat;
+    background-color: #1b2562;
     height: auto;
-    min-height: 90vh;
+    min-height: 95vh;
 }
 
 .banner {

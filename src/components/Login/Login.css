@@ -1,9 +1,26 @@
 .validation-field {
-    height: 5rem;
+    height: 20%;
+    display: block;
 }
 
 .validation-text {
-    font-size: 1.25rem;
+    font-size: 0.9rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    color: aliceblue;
+    font-weight: 400;
+}
+
+/* .form-control {
+    height: 80%;
+} */
+
+.btn {
+    height: 80%;
+    border-radius: 0.25rem;
+}
+
+.logged {
+    font-size: 1rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     color: aliceblue;
     font-weight: 400;

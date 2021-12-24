@@ -1,3 +1,4 @@
+import './Search.css'
 import axios from "axios";
 import { Formik, Form, Field } from "formik";
 import { useState } from "react";
@@ -20,8 +21,8 @@ const Search = () => {
         if (!value) {
             error = 'Required!'
         } else if (searchById === true) {
-            if (isNaN(parseInt(value)) || parseInt(value) > 500 || parseInt(value) <= 0) {
-                error = 'Must be a number between 1 and 500';
+            if (isNaN(parseInt(value)) || parseInt(value) > 732 || parseInt(value) <= 0) {
+                error = 'Must be a number between 1 and 732';
             }
         }
         else if (searchById === false) {
@@ -62,7 +63,7 @@ const Search = () => {
             <div className="container d-flex">
                 <Formik
                     initialValues={{
-                        input: '',
+                        type: 'id',
                     }}
                 onSubmit={values => {
                     findSuperhero(values.input);
@@ -70,7 +71,7 @@ const Search = () => {
                 >
                 {({ errors, touched }) => (
                     <Form>
-                        <label htmlFor="type">Search by</label>
+                        <label htmlFor="type" className="search-text">Search by</label>
                         <Field
                             onChange={handleSelect}
                             component="select"
@@ -78,7 +79,7 @@ const Search = () => {
                             name="type"
                             multiple={false}
                         >
-                            <option defaultValue value="id">id</option>
+                            <option value="id">id</option>
                             <option value="name">name</option>
                         </Field>
                         <Field name="input" validate={validateInput} />

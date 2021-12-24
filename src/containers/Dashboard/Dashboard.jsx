@@ -11,7 +11,6 @@ const Dashboard = () => {
     const removeSuperhero = ((hero) => {
         let heroById = team.find(({ id }) => id === hero.target.id);
         handleRemove(heroById);
-        // console.log(heroById)
     })
 
     return (
