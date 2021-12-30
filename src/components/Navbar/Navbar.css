@@ -9,7 +9,11 @@
 }
 
 .navbar {
-    height: 15vh;
+    height: 6rem;
+}
+
+.logo-link {
+    text-decoration: none;
 }
 
 .logo-container {

@@ -10,17 +10,13 @@
     font-weight: 400;
 }
 
-/* .form-control {
-    height: 80%;
-} */
-
-.btn {
+.login-btn {
     height: 80%;
     border-radius: 0.25rem;
 }
 
 .logged {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     color: aliceblue;
     font-weight: 400;

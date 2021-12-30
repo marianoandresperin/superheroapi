@@ -4,6 +4,8 @@ import { Formik, Form, Field } from "formik";
 import { useState } from "react";
 import { useTeam } from "../../contexts/TeamContext";
 import Result from "../Result/Result";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const Search = () => {
     const mainURL = 'https://superheroapi.com/api/';
@@ -17,6 +19,7 @@ const Search = () => {
     };
 
     const validateInput = (value) => {
+        console.log(value)
         let error;
         if (!value) {
             error = 'Required!'
@@ -44,6 +47,7 @@ const Search = () => {
     })
         
     const findSuperhero = (inputValue) => {
+        // let inputValue = e.target.value
         let handleURL;
         searchById === true ? handleURL = '' : handleURL = 'search/'
         axios({
@@ -56,35 +60,46 @@ const Search = () => {
             .catch(err =>
                 console.log(err)
             )
+        console.log(inputValue)
     };
     
     return (
         <>
-            <div className="container d-flex">
+            <div className="container d-flex flex-column">
+                <h1 className='search-title text-center my-5'>
+                    Search for your favourite Superheroes and build your own team!
+                </h1>
                 <Formik
-                    initialValues={{
-                        type: 'id',
-                    }}
                 onSubmit={values => {
                     findSuperhero(values.input);
-                }}
+                    }}
+                    initialValues={{
+                        input: ''
+                    }}
                 >
                 {({ errors, touched }) => (
-                    <Form>
-                        <label htmlFor="type" className="search-text">Search by</label>
-                        <Field
-                            onChange={handleSelect}
-                            component="select"
-                            id="type"
-                            name="type"
-                            multiple={false}
-                        >
-                            <option value="id">id</option>
-                            <option value="name">name</option>
-                        </Field>
-                        <Field name="input" validate={validateInput} />
-                        {errors.input && touched.input && <div>{errors.input}</div>}
-                        <button type="submit">Go!</button>
+                    <Form className='input-group my-3 d-flex flex-column'>
+                        <div className='d-flex flex-row'>
+                            <label htmlFor="type" className="input-group-text label-search">Search by</label>
+                            <Field
+                                className='form-select select-search'
+                                onChange={handleSelect}
+                                component="select"
+                                id="type"
+                                name="type"
+                                multiple={false}
+                                >
+                                <option value="id">id</option>
+                                <option value="name">name</option>
+                            </Field>
+                            <Field name="input" type="text" id="input" validate={validateInput} className='form-control input-search' /> 
+                            <button type="submit" className='btn btn-secondary btn-search'>
+                                <FontAwesomeIcon icon={faSearch} size='2x' className='search-icon' />
+                            </button>
+                        </div>
+                        <div className='d-flex flex-row justify-content-center'>
+                            {errors.input && touched.input ? <div className='validation-search'>{errors.input}</div> : null}
+                        </div>
                     </Form>
                 )}
                 </Formik>

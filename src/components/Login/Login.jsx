@@ -52,7 +52,7 @@ const Login = () => {
                         <Field name="password" type="password" placeholder="Password" validate={validatePassword} className="form-control" />
                         {errors.password && touched.password && <div className='validation-text'>{errors.password}</div>}
                     </div>
-                    <button type="submit" className='btn btn-outline-success m-2'>Sign in</button>
+                    <button type="submit" className='btn btn-outline-success m-2 login-btn'>Sign in</button>
                 </Form> 
             )}
         </Formik>
