@@ -40,3 +40,11 @@
     color: aliceblue;
     font-weight: 400;
 }
+
+.result-container {
+    background-color: #be0a15;
+    border-radius: 0.25rem;
+    border: 1px solid #e49016;
+    width: auto;
+    height: auto;
+}

@@ -19,7 +19,6 @@ const Search = () => {
     };
 
     const validateInput = (value) => {
-        console.log(value)
         let error;
         if (!value) {
             error = 'Required!'
@@ -37,7 +36,7 @@ const Search = () => {
     };
 
     const addSuperhero = ((hero) => {
-        let heroById = [result].find(({id}) => id === hero.target.id);
+        let heroById = result.find(({id}) => id === hero.target.id);
         handleAdd(heroById);
     });
 
@@ -47,7 +46,6 @@ const Search = () => {
     })
         
     const findSuperhero = (inputValue) => {
-        // let inputValue = e.target.value
         let handleURL;
         searchById === true ? handleURL = '' : handleURL = 'search/'
         axios({
@@ -55,12 +53,11 @@ const Search = () => {
             url: `${handleURL}${inputValue}`
         })
             .then(snapshot =>
-                searchById === true ? setResult(snapshot.data) : setResult(snapshot.data.results)
+                searchById === true ? setResult([snapshot.data]) : setResult(snapshot.data.results)
             )
             .catch(err =>
                 console.log(err)
             )
-        console.log(inputValue)
     };
     
     return (
@@ -104,14 +101,14 @@ const Search = () => {
                 )}
                 </Formik>
             </div>
-            {result ? <>
-            {searchById === true ?
-                <Result name={result.name} id={result.id} pictureurl={result.image.url} add={addSuperhero} remove={removeSuperhero} />
-                : <> {result.map(n =>
-                    <Result key={n.id} name={n.name} pictureurl={n.image.url} add={addSuperhero} remove={removeSuperhero} id={n.id}/>
-                )} </>
-            } </>
-            : null}
+            
+            {result && result.length > 0 ? <> 
+                <div className='container d-flex flex-row justify-content-evenly p-3 m-3 result-container'>
+                    {result.map(n =>
+                            <Result key={n.id} name={n.name} pictureurl={n.image.url} add={addSuperhero} remove={removeSuperhero} id={n.id} />
+                    )}
+                </div>
+            </> : null}
         </>
     )
 }

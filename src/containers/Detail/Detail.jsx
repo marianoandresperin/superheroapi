@@ -1,4 +1,4 @@
-// import './Dashboard.css';
+import './Detail.css';
 import { useLogin } from "../../contexts/LoginContext";
 import { useTeam } from "../../contexts/TeamContext";
 import SuperheroDetail from '../../components/SuperheroDetail/SuperheroDetail';
