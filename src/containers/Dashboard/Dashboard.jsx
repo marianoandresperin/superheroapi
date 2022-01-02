@@ -16,14 +16,17 @@ const Dashboard = () => {
     return (
         <>
             <div className="container-fluid background">
-                <div className="container d-flex flex-column justify-content-center align-items-center">
+                <div className="container d-flex flex-column justify-content-center align-items-center pb-5">
                     {auth === true ? <> <Search />
-                        {team ? <> 
-                            {team.map(n =>
-                                <Superhero key={n.id} name={n.name} pictureurl={n.image.url} intelligence={n.powerstats.intelligence} strength={n.powerstats.strength} speed={n.powerstats.speed} durability={n.powerstats.durability} power={n.powerstats.power} combat={n.powerstats.combat} remove={removeSuperhero} id={n.id} />
-                            )}
-                        </> : <h1>Your superhero list is empty!</h1>
-                        } </> : <h1>You must be logged in!</h1>
+                        {team.length > 0 ? <>
+                            <h5 className='team-title mt-2 mb-0'>Your team</h5>
+                            <div className='team-container d-flex flex-row'>
+                                {team.map(n =>
+                                    <Superhero key={n.id} name={n.name} pictureurl={n.image.url} intelligence={n.powerstats.intelligence} strength={n.powerstats.strength} speed={n.powerstats.speed} durability={n.powerstats.durability} power={n.powerstats.power} combat={n.powerstats.combat} remove={removeSuperhero} id={n.id} />
+                                )}
+                            </div>
+                        </> : <h1 className='message my-5'>Your team is empty, search for your favourite Superheroes</h1>
+                        } </> : <h1 className='message my-5'>You must be logged in!</h1>
                     }
                 </div>
             </div>

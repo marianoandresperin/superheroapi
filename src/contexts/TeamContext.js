@@ -8,7 +8,7 @@ const TeamProvider = ({ children }) => {
     const handleAdd = ((hero) => {
         const isInTeam = team.some((findHero) => findHero.id === hero.id);
         
-        if (!isInTeam) {
+        if (!isInTeam && team.length < 6) {
             setTeam([...team, hero]);
         };
     });

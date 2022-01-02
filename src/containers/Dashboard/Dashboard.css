@@ -3,3 +3,27 @@
     height: auto;
     min-height: 80vh;
 }
+
+.team-container {
+    width: 100%;
+    background-color: #be0a15;
+    border-radius: 0.25rem;
+    border: 1px solid #e49016;
+}
+
+.team-title {
+    font-family: 'Bangers', cursive;
+    font-size: 3.5rem;
+    color: #be0a15;
+    text-shadow: 1px 1px 3px #e49016;
+    letter-spacing: 0.2rem;
+    align-self: flex-start;
+}
+
+.message {
+    font-family: 'Bangers', cursive;
+    font-size: 3rem;
+    color: #be0a15;
+    text-shadow: 1px 1px 3px #e49016;
+    letter-spacing: 0.2rem;
+}
