@@ -59,6 +59,8 @@ const Search = () => {
                 console.log(err)
             )
     };
+
+    console.log(result)
     
     return (
         <>
@@ -107,8 +109,7 @@ const Search = () => {
                         )}
                     </div>
                 }
-            </> : null
-            }
+            </> : result === undefined ? <h5 className='validation-search'>No results for that given name</h5> : null}
         </>
     )
 }
