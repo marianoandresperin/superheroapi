@@ -3,3 +3,10 @@
     height: auto;
     min-height: 80vh;
 }
+
+.detail-loading {
+    height: 20rem;
+    width: 20rem;
+    border: 1rem solid #be0a15;
+    border-right-color: transparent;
+}

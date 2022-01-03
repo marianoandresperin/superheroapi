@@ -5,7 +5,6 @@ import SuperheroDetail from '../../components/SuperheroDetail/SuperheroDetail';
 import { useEffect, useState } from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import axios from 'axios';
-import Loading from '../../components/Loading/Loading';
 
 const Detail = () => {
     const { auth } = useLogin();
@@ -43,7 +42,7 @@ const Detail = () => {
             <div className="container-fluid background">
                 <div className="container d-flex flex-column justify-content-center align-items-center">
                     {auth === true ? <>
-                        {detail ? <SuperheroDetail
+                            {detail ? <SuperheroDetail
                             name={detail.name}
                             alias={detail.biography.aliases[0]}
                             height={detail.appearance.height[1]}
@@ -54,7 +53,9 @@ const Detail = () => {
                             add={addSuperhero}
                             remove={removeSuperhero}
                             id={detail.id}
-                        /> : <Loading />}
+                            /> :<div className="spinner-border detail-loading m-5" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>}
                     </> : <Redirect to="/" />}
                 </div>
                 </div></> : <Redirect to={"/error"} />}
