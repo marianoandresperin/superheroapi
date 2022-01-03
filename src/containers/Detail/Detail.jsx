@@ -3,7 +3,7 @@ import { useLogin } from "../../contexts/LoginContext";
 import { useTeam } from "../../contexts/TeamContext";
 import SuperheroDetail from '../../components/SuperheroDetail/SuperheroDetail';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Loading from '../../components/Loading/Loading';
 
@@ -20,10 +20,9 @@ const Detail = () => {
         handleRemove(heroById);
     })
 
-    const addSuperhero = ((hero) => {
-        let heroById = team.find(({ id }) => id === hero.target.id);
-        handleAdd(heroById);
-    })
+    const addSuperhero = (() => {
+        handleAdd(detail);
+    });
 
     useEffect(() => {
         axios({
@@ -32,7 +31,6 @@ const Detail = () => {
         })
             .then(snapshot =>
                 setDetail(snapshot.data)
-                // console.log(snapshot.data)
             )
             .catch(err =>
                 console.log(err)
@@ -41,6 +39,7 @@ const Detail = () => {
 
     return (
         <>
+        {heroId < 733 ? <>
             <div className="container-fluid background">
                 <div className="container d-flex flex-column justify-content-center align-items-center">
                     {auth === true ? <>
@@ -54,11 +53,11 @@ const Detail = () => {
                             haircolor={detail.appearance["hair-color"]}
                             add={addSuperhero}
                             remove={removeSuperhero}
-                        /> : <Loading />
-                        }
-                    </> : <h1>You must be logged in!</h1>}
+                            id={detail.id}
+                        /> : <Loading />}
+                    </> : <Redirect to="/" />}
                 </div>
-            </div>
+                </div></> : <Redirect to={"/error"} />}
         </>
     )
 }

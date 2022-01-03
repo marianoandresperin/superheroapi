@@ -39,8 +39,7 @@ const SuperheroDetail = ({ name, pictureurl, alias, height, weight, haircolor, e
                                 <button onClick={remove} id={id} className="btn btn-danger result-btn">Remove</button>
                                 : <button onClick={add} id={id} className="btn btn-success result-btn">Add</button>
                             }
-                        </div>
-                    
+                    </div>
                 </div>
             </div>
         </>

@@ -5,10 +5,9 @@ const LoginContext = createContext();
 export const useLogin = () => useContext(LoginContext);
 
 const LoginProvider = ({ children }) => {
-    const [auth, setAuth] = useState(false)
+    const [auth, setAuth] = useState(true)
 
     const formSubmit = (values) => {
-        console.log(values);
         axios({
             method: 'post',
             url: 'http://challenge-react.alkemy.org/',
@@ -18,9 +17,9 @@ const LoginProvider = ({ children }) => {
             localStorage.setItem('email', values.email)
             localStorage.setItem('token', res.data.token)
             setAuth(true)
-            console.log(res.data.token)
         })
         .catch(err => {
+            alert(err)
             console.log(err)
         })
     }
@@ -31,7 +30,7 @@ const LoginProvider = ({ children }) => {
     }
     
     useEffect(() => {
-        localStorage.getItem('token') ? setAuth(true) : setAuth(false)
+        localStorage.getItem('token') !== null ? setAuth(true) : setAuth(false)
     }, [auth])
 
     return (

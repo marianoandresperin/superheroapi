@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useTeam } from '../../contexts/TeamContext';
+import { NavLink } from 'react-router-dom';
 import './Result.css'
 
-const Result = ({ name, pictureurl, details, add, remove, id }) => {
+const Result = ({ name, pictureurl, add, remove, id }) => {
     const { team } = useTeam();
     const [added, setAdded] = useState(false);
 
@@ -23,7 +24,9 @@ const Result = ({ name, pictureurl, details, add, remove, id }) => {
                     <h5 className="card-title d-flex justify-content-center">{name}</h5>
                 </div>
                 <div className="card-body d-flex flex-row justify-content-evenly">
-                    <button onClick={details} className="btn btn-primary result-btn">Details</button>
+                    <NavLink to={`/hero/${id}`}>
+                        <button className="btn btn-primary">Details</button>
+                    </NavLink>
                     {added === true ?
                         <button onClick={remove} id={id} className="btn btn-danger result-btn">Remove</button>
                         : <button onClick={add} id={id} className="btn btn-success result-btn">Add</button>

@@ -6,14 +6,13 @@ import { useTeam } from "../../contexts/TeamContext";
 import Result from "../Result/Result";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import Loading from '../Loading/Loading';
 
 const Search = () => {
     const mainURL = 'https://superheroapi.com/api/';
     const token = '10226513330317308';
     const { team, handleAdd, handleRemove } = useTeam();
-    const [result, setResult] = useState(null)
-    const [searchById, setSearchById] = useState(true)
+    const [result, setResult] = useState(null);
+    const [searchById, setSearchById] = useState(true);
 
     const handleSelect = (e) => {
         e.target.value === 'id' ? setSearchById(true) : setSearchById(false)
@@ -99,16 +98,17 @@ const Search = () => {
                 )}
                 </Formik>
             </div>
-            {result && result.length > 0 ? <> 
+            {result && result.length > 0 ? <>
                 {result.length > 6 ?
                     <h5 className='validation-search'>Too many results, be more specific!</h5>
                     : <div className='container d-flex flex-row justify-content-evenly p-3 m-3 result-container'>
                         {result.map(n =>
-                                <Result key={n.id} name={n.name} pictureurl={n.image.url} add={addSuperhero} remove={removeSuperhero} id={n.id} />
-                                )}
+                            <Result key={n.id} name={n.name} pictureurl={n.image.url} add={addSuperhero} remove={removeSuperhero} id={n.id} />
+                        )}
                     </div>
                 }
-            </> : null}
+            </> : null
+            }
         </>
     )
 }

@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const Superhero = ({ name, pictureurl, intelligence, strength, speed, durability, power, combat, details, remove, id }) => {
 
     return (
@@ -16,7 +18,9 @@ const Superhero = ({ name, pictureurl, intelligence, strength, speed, durability
                     <li className="list-group-item">Combat: {combat}</li>
                 </ul>
                 <div className="card-body d-flex flex-row justify-content-evenly">
-                    <button onClick={details} className="btn btn-primary">Details</button>
+                    <NavLink to={`/hero/${id}`}>
+                        <button className="btn btn-primary">Details</button>
+                    </NavLink>
                     <button id={id} onClick={remove} className="btn btn-danger">Remove</button>
                 </div>
             </div>

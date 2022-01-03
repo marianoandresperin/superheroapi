@@ -33,9 +33,9 @@ const Login = () => {
 
     return (
         auth === true ? <>
-            <h1 className="logged m-2">Logged as: {localStorage.getItem('email')}</h1>
-            <button type="button" className="btn btn-outline-danger m-2" onClick={handleLogOut}>Sign out</button> </> :
-        <Formik
+            <h1 className="logged m-2">{localStorage.getItem('email')}</h1>
+            <button type="button" className="btn btn-outline-danger m-2" onClick={handleLogOut}>Sign out</button> </>
+            : <Formik
             initialValues={{
                 email: '',
                 password: ''
