@@ -7,10 +7,15 @@ const TeamProvider = ({ children }) => {
 
     const handleAdd = ((hero) => {
         const isInTeam = team.some((findHero) => findHero.id === hero.id);
-        
-        if (!isInTeam && team.length < 6) {
+        const heroAlig = hero.biography.alignment;
+        const badGuys = team.filter(heroes => heroes.biography.alignment === "bad");
+        const goodGuys = team.filter(heroes => heroes.biography.alignment === "good");
+
+        if (!isInTeam && heroAlig === "bad" && badGuys.length < 3 && team.length < 6) {
             setTeam([...team, hero]);
-        };
+        } else if (!isInTeam && heroAlig === "good" && goodGuys.length < 3 && team.length < 6) {
+            setTeam([...team, hero]);
+        }
     });
 
     const handleRemove = ((hero) => {

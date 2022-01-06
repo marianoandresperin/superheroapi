@@ -10,6 +10,7 @@ const Detail = () => {
     const { auth } = useLogin();
     const { team, handleRemove, handleAdd } = useTeam();
     const [detail, setDetail] = useState(null);
+    const [added, setAdded] = useState(false);
     const { heroId } = useParams();
     const mainURL = 'https://superheroapi.com/api/';
     const token = '10226513330317308';
@@ -32,8 +33,10 @@ const Detail = () => {
                 setDetail(snapshot.data)
             )
             .catch(err =>
-                console.log(err)
-            );
+            console.log(err)
+        )
+        team.some((hero) => hero.id === heroId) ? setAdded(true) : setAdded(false);
+        // detail && detail.biography.alignment.good === true ? setAlignment('good') : setAlignment('bad')
     }, [team, heroId])
 
     return (
@@ -53,6 +56,8 @@ const Detail = () => {
                             add={addSuperhero}
                             remove={removeSuperhero}
                             id={detail.id}
+                            added={added}
+                            goodOrBad={detail.biography.alignment}
                             /> :<div className="spinner-border detail-loading m-5" role="status">
                             <span className="visually-hidden">Loading...</span>
                         </div>}

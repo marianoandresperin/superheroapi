@@ -3,7 +3,7 @@ import { useTeam } from '../../contexts/TeamContext';
 import { NavLink } from 'react-router-dom';
 import './Result.css'
 
-const Result = ({ name, pictureurl, add, remove, id }) => {
+const Result = ({ name, pictureurl, add, remove, id, alignment }) => {
     const { team } = useTeam();
     const [added, setAdded] = useState(false);
 
@@ -18,7 +18,7 @@ const Result = ({ name, pictureurl, add, remove, id }) => {
 
     return (
         <>
-            <div className="card result-main m-3">
+            <div className={`card result-main m-3 ${alignment}`}>
                 <img src={pictureurl} alt={`${name} thumbnail.`}/>
                 <div className="card-body">
                     <h5 className="card-title d-flex justify-content-center">{name}</h5>

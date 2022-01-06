@@ -105,7 +105,7 @@ const Search = () => {
                     <h5 className='validation-search'>Too many results, be more specific!</h5>
                     : <div className='container d-flex flex-row justify-content-evenly p-3 m-3 result-container'>
                         {result.map(n =>
-                            <Result key={n.id} name={n.name} pictureurl={n.image.url} add={addSuperhero} remove={removeSuperhero} id={n.id} />
+                            <Result key={n.id} name={n.name} pictureurl={n.image.url} add={addSuperhero} remove={removeSuperhero} id={n.id} alignment={n.biography.alignment} />
                         )}
                     </div>
                 }

@@ -1,21 +1,22 @@
+import './Superhero.css'
 import { NavLink } from "react-router-dom";
 
-const Superhero = ({ name, pictureurl, intelligence, strength, speed, durability, power, combat, details, remove, id }) => {
+const Superhero = ({ name, pictureurl, intelligence, strength, speed, durability, power, combat, remove, id, alignment }) => {
 
     return (
         <>
-            <div className="card col-2">
+            <div className={`card col-2 ${alignment}`}>
                 <img src={pictureurl} alt={`${name} thumbnail.`}/>
                 <div className="card-body">
                     <h5 className="card-title">{name}</h5>
                 </div>
                 <ul className="list-group list-group-flush">
-                    <li className="list-group-item">Intelligence: {intelligence}</li>
-                    <li className="list-group-item">Strength: {strength}</li>
-                    <li className="list-group-item">Speed: {speed}</li>
-                    <li className="list-group-item">Durability: {durability}</li>
-                    <li className="list-group-item">Power: {power}</li>
-                    <li className="list-group-item">Combat: {combat}</li>
+                    <li className={`list-group-item ${alignment}`}>Intelligence: {intelligence}</li>
+                    <li className={`list-group-item ${alignment}`}>Strength: {strength}</li>
+                    <li className={`list-group-item ${alignment}`}>Speed: {speed}</li>
+                    <li className={`list-group-item ${alignment}`}>Durability: {durability}</li>
+                    <li className={`list-group-item ${alignment}`}>Power: {power}</li>
+                    <li className={`list-group-item ${alignment}`}>Combat: {combat}</li>
                 </ul>
                 <div className="card-body d-flex flex-row justify-content-evenly">
                     <NavLink to={`/hero/${id}`}>
