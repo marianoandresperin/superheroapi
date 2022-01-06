@@ -21,8 +21,6 @@ const Team = () => {
         
     }
 
-    let maxValue
-
     return (
         <>
             {team.length > 0 ? <>
