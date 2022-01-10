@@ -15,16 +15,22 @@ const Team = () => {
         return total.reduce((a, b) => a + b);
     }
 
-    const getWeight = () => {
-        const weights = team.map(hero => hero.appearance.weight[1])
-        console.log(weights)
-        
+    const getAvgWeight = () => {
+        let weights = team.map(hero => parseInt(hero.appearance.weight[1].replace(/\D/g, '')));
+        let total = weights.reduce((a, b) => a + b);
+        return Math.round(total / team.length);
+    }
+
+    const getAvgHeight = () => {
+        let heights = team.map(hero => parseInt(hero.appearance.height[1].replace(/\D/g, '')));
+        let total = heights.reduce((a, b) => a + b);
+        return Math.round(total / team.length);
     }
 
     return (
         <>
             {team.length > 0 ? <>
-                <h5 className='team-title mt-2 mb-0'>Your team: INTELIGENNC</h5>
+                <h3 className='team-title mt-2 mb-0'>Your team: INTELIGENNC</h3>
                 <div className='team-container'>
                     <div className="d-flex flex-row">
                     {team.map(n =>
@@ -44,22 +50,22 @@ const Team = () => {
                         />
                     )}
                     </div>
-                    <div>
-                        <div>
-                            <h5>{`Intelligence: ${getTotal('intelligence')}`}</h5>
-                            <h5>{`Strength: ${getTotal('strength')}`}</h5>
-                            <h5>{`Speed: ${getTotal('speed')}`}</h5>
-                            <h5>{`Durability: ${getTotal('durability')}`}</h5>
-                            <h5>{`Power: ${getTotal('power')}`}</h5>
-                            <h5>{`Combat ${getTotal('combat')}`}</h5>
+                    <div className='d-flex flex-column my-3'>
+                        <div className='d-flex flex-row mt-3 pt-5 stats-border'>
+                            <h5 className='col-2 d-flex justify-content-center team-stats'>{`Intelligence: ${getTotal('intelligence')}`}</h5>
+                            <h5 className='col-2 d-flex justify-content-center team-stats'>{`Strength: ${getTotal('strength')}`}</h5>
+                            <h5 className='col-2 d-flex justify-content-center team-stats'>{`Speed: ${getTotal('speed')}`}</h5>
+                            <h5 className='col-2 d-flex justify-content-center team-stats'>{`Durability: ${getTotal('durability')}`}</h5>
+                            <h5 className='col-2 d-flex justify-content-center team-stats'>{`Power: ${getTotal('power')}`}</h5>
+                            <h5 className='col-2 d-flex justify-content-center team-stats'>{`Combat: ${getTotal('combat')}`}</h5>
                         </div>
-                        <div>
-                            {`Peso promedio ${getWeight()}`}
-                            Altura promedio
+                        <div className='d-flex flex-row py-2'>
+                            <h5 className='col-6 d-flex justify-content-center team-stats'>{`Average Team Weight: ${getAvgWeight()} kg`}</h5>
+                            <h5 className='col-6 d-flex justify-content-center team-stats'>{`Average Team Height: ${getAvgHeight()} cm`}</h5>
                         </div>
                     </div>
                 </div>
-                </> : <h1 className='message my-5'>Your team is empty, search for your favourite Superheroes</h1>
+                </> : <h3 className='message my-5'>Your team is empty, search for your favourite Superheroes</h3>
             }
         </>
     )

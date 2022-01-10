@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const Search = () => {
-    const mainURL = 'https://superheroapi.com/api/';
+    const mainURL = 'https://superheroapi.com/api.php/';
     const token = '10226513330317308';
     const { team, handleAdd, handleRemove } = useTeam();
     const [result, setResult] = useState(null);

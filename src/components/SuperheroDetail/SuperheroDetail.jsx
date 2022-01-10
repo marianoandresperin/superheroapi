@@ -7,7 +7,7 @@ const SuperheroDetail = ({ name, pictureurl, alias, height, weight, haircolor, e
             <div className='container-fluid background d-flex flex-column justify-content-center align-items-center'>
                 <div className={`card w-75 ${goodOrBad}`}>
                     <div className='d-flex flex-row'>
-                        <div className='d-flex flex-column w-50'>
+                        <div className='d-flex flex-column col-6'>
                             <div className="card-body">
                                 <h5 className="card-title">{name}</h5>
                                 <p className="card-text">Alias: {alias}</p>
@@ -20,7 +20,9 @@ const SuperheroDetail = ({ name, pictureurl, alias, height, weight, haircolor, e
                                 <li className={`list-group-item ${goodOrBad}`}>Workplace: {workplace}</li>
                             </ul>  
                         </div>
-                        <img src={pictureurl} className='w-50' alt={`${name} thumbnail.`}/>
+                        <div className='col-6 d-flex flex-row justify-content-center my-2'>
+                            <img src={pictureurl} className='w-50' alt={`${name} thumbnail.`}/>
+                        </div>
                     </div>
                     <div className="card-body d-flex flex-row justify-content-evenly">
                             {added === true ?

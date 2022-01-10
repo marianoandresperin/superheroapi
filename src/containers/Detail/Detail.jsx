@@ -53,6 +53,7 @@ const Detail = () => {
                             workplace={detail.work["base"]}
                             eyecolor={detail.appearance["eye-color"]}
                             haircolor={detail.appearance["hair-color"]}
+                            pictureurl={detail.image.url}
                             add={addSuperhero}
                             remove={removeSuperhero}
                             id={detail.id}
