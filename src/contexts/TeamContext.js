@@ -15,6 +15,8 @@ const TeamProvider = ({ children }) => {
             setTeam([...team, hero]);
         } else if (!isInTeam && heroAlig === "good" && goodGuys.length < 3 && team.length < 6) {
             setTeam([...team, hero]);
+        } else if (!isInTeam && heroAlig !== "good" && heroAlig !== "bad" && team.length < 6) {
+            setTeam([...team, hero]);
         }
     });
 
@@ -24,8 +26,6 @@ const TeamProvider = ({ children }) => {
         team.splice(getHeroIndex, 1);
         setTeam([...team]);
     });
-
-    console.log(team);
 
     return (
         <TeamContext.Provider value={{ team, setTeam, handleRemove, handleAdd }} >

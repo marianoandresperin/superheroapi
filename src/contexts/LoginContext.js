@@ -10,7 +10,7 @@ const LoginProvider = ({ children }) => {
     const formSubmit = (values) => {
         axios({
             method: 'post',
-            url: 'https://challenge-react.alkemy.org/',
+            url: 'http://challenge-react.alkemy.org/',
             data: values
         })
         .then(res => {

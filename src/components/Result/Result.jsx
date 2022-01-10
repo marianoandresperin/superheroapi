@@ -19,7 +19,7 @@ const Result = ({ name, pictureurl, add, remove, id, alignment }) => {
     return (
         <>
             <div className={`card result-main m-3 ${alignment}`}>
-                <img src={pictureurl} alt={`${name} thumbnail.`}/>
+                <img className='result-image' src={pictureurl} alt={`${name} thumbnail.`}/>
                 <div className="card-body">
                     <h5 className="card-title d-flex justify-content-center">{name}</h5>
                 </div>

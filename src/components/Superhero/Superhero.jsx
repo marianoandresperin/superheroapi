@@ -6,7 +6,7 @@ const Superhero = ({ name, pictureurl, intelligence, strength, speed, durability
     return (
         <>
             <div className={`card col-2 ${alignment}`}>
-                <img src={pictureurl} alt={`${name} thumbnail.`}/>
+                <img className='hero-image' src={pictureurl} alt={`${name} thumbnail.`}/>
                 <div className="card-body">
                     <h5 className="card-title">{name}</h5>
                 </div>

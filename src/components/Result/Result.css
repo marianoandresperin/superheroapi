@@ -7,3 +7,7 @@
     width: 5.5rem;
     height: 2.5rem;
 }
+
+.result-image {
+    max-height: 18.5rem;
+}
