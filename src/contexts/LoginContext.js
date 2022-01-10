@@ -10,8 +10,7 @@ const LoginProvider = ({ children }) => {
     const formSubmit = (values) => {
         axios({
             method: 'post',
-            baseURL: 'https://cors-anywhere.herokuapp.com/',
-            url: 'http://challenge-react.alkemy.org/',
+            url: 'https://challenge-react.alkemy.org/',
             data: values
         })
         .then(res => {
