@@ -15,22 +15,28 @@ const Team = () => {
         return total.reduce((a, b) => a + b);
     }
 
-    const getAvgWeight = () => {
-        let weights = team.map(hero => parseInt(hero.appearance.weight[1].replace(/\D/g, '')));
-        let total = weights.reduce((a, b) => a + b);
+    const getAvg = (key) => {
+        let initials = team.map(hero => parseInt(hero.appearance[key][1].replace(/\D/g, '')));
+        let total = initials.reduce((a, b) => a + b);
         return Math.round(total / team.length);
     }
 
-    const getAvgHeight = () => {
-        let heights = team.map(hero => parseInt(hero.appearance.height[1].replace(/\D/g, '')));
-        let total = heights.reduce((a, b) => a + b);
-        return Math.round(total / team.length);
+    const getType = () => {
+        let totalStats = {
+            Intelligence: getTotal('intelligence'),
+            Strength: getTotal('strength'),
+            Speed: getTotal('speed'),
+            Durability: getTotal('durability'),
+            Power: getTotal('power'),
+            Combat: getTotal('combat')
+        }
+        return Object.keys(totalStats).reduce((a, b) => totalStats[a] >= totalStats[b] ? a : b);
     }
 
     return (
         <>
             {team.length > 0 ? <>
-                <h3 className='team-title mt-2 mb-0'>Your team: INTELIGENNC</h3>
+                <h3 className='team-title mt-2 mb-0'>Your team: {getType()}</h3>
                 <div className='team-container'>
                     <div className="d-flex flex-row">
                     {team.map(n =>
@@ -60,8 +66,8 @@ const Team = () => {
                             <h5 className='col-2 d-flex justify-content-center team-stats'>{`Combat: ${getTotal('combat')}`}</h5>
                         </div>
                         <div className='d-flex flex-row py-2'>
-                            <h5 className='col-6 d-flex justify-content-center team-stats'>{`Average Team Weight: ${getAvgWeight()} kg`}</h5>
-                            <h5 className='col-6 d-flex justify-content-center team-stats'>{`Average Team Height: ${getAvgHeight()} cm`}</h5>
+                            <h5 className='col-6 d-flex justify-content-center team-stats'>{`Average Team Weight: ${getAvg('weight')} kg`}</h5>
+                            <h5 className='col-6 d-flex justify-content-center team-stats'>{`Average Team Height: ${getAvg('height')} cm`}</h5>
                         </div>
                     </div>
                 </div>
